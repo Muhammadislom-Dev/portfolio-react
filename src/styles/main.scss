@@ -1,0 +1,469 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+
+// variables
+
+// colors
+$bgColor: #101010;
+$bgColor2: rgb(255, 0, 0);
+
+$whiteColor: #ffffff;
+$darkColor: #00000000;
+
+$titleColor: #e0e0e0;
+$mainColor: #949494;
+
+$homeButtonGray: #2b2b2b;
+$homeButtonBlue: #2e89d3;
+
+// font-family
+$robotoMono: "Roboto Mono",
+monospace !important;
+$robotoSlab: "Roboto Slab",
+serif !important;
+
+// mixin
+@mixin PageTitle {
+  font-family: $robotoSlab;
+  font-weight: bold;
+  font-size: 45px;
+  color: $titleColor;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+@mixin PageTitleCommit {
+  font-family: $robotoSlab;
+  font-weight: normal;
+  font-size: 24px;
+  color: $mainColor;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+@mixin Button {
+  background-color: $homeButtonGray;
+  padding: 17px 35px;
+  color: $whiteColor;
+  font-size: 20px;
+  text-decoration: none;
+  font-family: $robotoSlab;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.3s linear;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:nth-child(2) {
+    background-color: $homeButtonBlue;
+    margin-left: 10px;
+    transition: all 0.3s linear;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+@mixin setupLI {
+  color: $mainColor;
+  font-family: $robotoSlab;
+  // margin-left: 18px;
+  margin: 20px 18px 10px;
+  letter-spacing: 0.5px;
+}
+
+@mixin setupSvg {
+  font-size: 34px;
+  margin-left: 5px;
+  color: $mainColor;
+}
+
+@mixin setupTitle {
+  color: $titleColor;
+  font-family: $robotoSlab;
+  margin: 0;
+}
+
+// edit scrollbar
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $darkColor;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $whiteColor;
+  border-radius: 25px;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: $bgColor;
+  overflow-x: hidden;
+}
+
+// navbar
+nav {
+  padding: 15px 80px !important;
+
+  .navbar-brand {
+    font-size: 32px;
+
+    b {
+      font-family: $robotoMono;
+      font-weight: 700;
+      color: $whiteColor !important;
+    }
+  }
+
+  .navbar-nav {
+    margin-left: auto;
+
+    .nav-item {
+      margin: 20px;
+      font-size: 16px;
+      font-family: $robotoMono;
+
+      a {
+        color: $whiteColor !important;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s linear;
+        -webkit-transition: all 0.3s linear;
+        position: relative;
+        letter-spacing: 2px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 20px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: $mainColor;
+          transition: all 0.3s linear;
+        }
+
+        &:hover {
+          color: $mainColor !important;
+
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// navbar fixed
+nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background-color: #101010cf;
+  box-shadow: 0 5px 15px #0c0c0cde;
+  // transition: all 0.3s linear;
+}
+
+// Main about info
+.aboutinfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  padding: 70px 0 !important;
+
+  .side1 {
+    width: 55%;
+    margin: 20px 0;
+
+    .title {
+      font-size: 70px;
+      font-family: $robotoSlab;
+      font-weight: 600;
+      color: $titleColor !important;
+      letter-spacing: 2px;
+    }
+
+    .description {
+      width: 70%;
+      margin: 15px 3px 60px;
+      color: $mainColor !important;
+      font-size: 20px;
+      font-family: $robotoSlab;
+    }
+
+    .buttons {
+      .linkBtn {
+        @include Button();
+      }
+    }
+
+    .socialNet {
+      display: flex;
+      margin-top: 50px;
+
+      .links {
+        padding: 0 30px 0 0;
+
+        .iconSvg {
+          font-size: 35px;
+          color: $titleColor;
+          transition: all 0.3s linear;
+
+          &:hover {
+            opacity: 0.5;
+            transform: scale(1.3);
+          }
+        }
+      }
+    }
+  }
+
+  .side2 {
+    .myImage {
+      border-radius: 50%;
+      width: 400px;
+      box-shadow: 4px 0px 15px 8px rgba(64, 64, 64, 0.49);
+    }
+  }
+}
+
+// portfolio
+.titles {
+  text-align: center;
+  margin-top: 75px;
+
+  .title {
+    @include PageTitle();
+  }
+
+  .commit {
+    @include PageTitleCommit();
+  }
+}
+
+.row {
+  .col-md-12 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .projectCard {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 50px 0;
+
+      .projectImage {
+        width: 50%;
+      }
+
+      .projectInfo {
+        margin: 30px 50px;
+        width: 50%;
+
+        @media (max-width:768px) {
+          width: auto;
+        }
+
+        .projectAbout {
+          .projectName {
+            color: $titleColor !important;
+            font-family: $robotoSlab;
+            font-weight: 600;
+            letter-spacing: 2px;
+          }
+
+          .projectDesc {
+            color: $mainColor !important;
+            font-family: $robotoSlab;
+            font-weight: normal;
+            letter-spacing: 3px;
+          }
+        }
+
+        .projectButtons {
+          margin-top: 50px;
+
+          .buttons {
+            @include Button();
+          }
+        }
+      }
+    }
+
+    &:nth-child(2n) {
+      .projectCard {
+        flex-direction: row-reverse;
+
+        .projectInfo {
+          margin: 30px 0;
+        }
+      }
+    }
+  }
+}
+
+// setup
+.setup-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .setup-image {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-top: 100px;
+      width: 50%;
+      border-radius: 10px;
+    }
+  }
+
+  .col-md-12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+
+    .my-setup {
+      display: flex;
+
+      .laptop-specs {
+        a {
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+
+          .laptop-logo {
+            @include setupTitle();
+          }
+
+          svg {
+            @include setupSvg();
+          }
+        }
+
+        li {
+          @include setupLI();
+        }
+      }
+
+      .keyboard-specs {
+        .keyboard-title {
+          display: flex;
+          align-items: center;
+
+          h2 {
+            @include setupTitle();
+          }
+
+          svg {
+            @include setupSvg();
+          }
+        }
+
+        li {
+          @include setupLI();
+        }
+      }
+    }
+  }
+}
+
+// about
+.about-main {
+  margin: 100px 0;
+
+  .row {
+    margin: 0;
+
+    .about-info {
+      display: flex;
+      justify-content: space-between;
+
+      .about-img {
+        margin: 0 !important;
+        width: 35%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .about-texts {
+        width: 75%;
+        padding-left: 100px;
+
+        p {
+          font-size: 24px;
+          font-family: $robotoSlab;
+          color: $mainColor;
+          // line-height: 1.5px;
+          letter-spacing: 2px;
+          text-align: justify;
+        }
+      }
+    }
+  }
+}
+
+// footer
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 20px 0;
+  text-align: center;
+
+  .footerTitle {
+    font-family: $robotoSlab;
+    font-size: 17px;
+    color: $mainColor;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .footerLogo {
+      text-decoration: none;
+      color: $whiteColor;
+      font-family: $robotoMono;
+      font-weight: bold;
+      margin-right: 5px;
+      font-size: 18px;
+    }
+
+    .heartIcon {
+      color: $bgColor2;
+      font-size: 20px;
+      margin-left: 5px;
+    }
+  }
+
+  .visits {
+    display: inline-block;
+    background-color: $homeButtonBlue;
+    color: $whiteColor;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+}
